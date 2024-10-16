@@ -1,0 +1,33 @@
+<div id="post-view">
+    {% for post in posts %}
+    <div class="post-item">
+        <div class="post-header">
+            <a class="post-user" href="{% url 'profile' post.poster 1 %}">{{ post.poster }}</a>
+            <div class="post-time">{{ post.date_time }}</div>
+            {% if post.is_poster %}
+                <a class="post-edit">Edit</a>
+            {% endif %}
+        </div>
+        <div class="post-content">
+            <div class="post-text">{{ post.content }}</div>
+            <textarea class="edit-textarea form-control" data-text="{{ post.id }}">{{ post.content }}</textarea>
+            <button class="save-button btn btn-primary btn-sm">Save</button>
+        </div>
+        <div class="post-footer">
+            <button class="like-button">
+                {% if not user.is_authenticated %}
+                    <i class="bi-heart"></i>
+                {% elif post.is_liked %}
+                    <i class="bi bi-heart-fill" data-like="{{ post.id }}"></i>
+                {% else %}
+                    <i class="bi bi-heart" data-like="{{ post.id }}"></i>
+                {% endif %}
+            </button>
+            <span class="post-likes">{{ post.likes }} Likes</span>
+            <span class="post-comment">Comment</span>
+        </div>
+    </div>
+    {% empty %}
+        <h4>No posts available.</h4>
+    {% endfor %}
+</div>

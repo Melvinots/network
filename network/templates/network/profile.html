@@ -1,0 +1,47 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <main>
+        <div class="content-box">
+            <div id="profile">
+                <div>
+                    {% if username == 'admin' %}
+                        <img src="https://www.pngmart.com/files/21/Admin-Profile-PNG-Clipart.png" width="150px" height="150px" alt="admin">
+                    {% else %}
+                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/626fd8140423801.6241b91e24d9c.png" width="150px" height="150px" alt="admin">
+                    {% endif %}
+                </div>
+                <div id="details">
+                    <h2>{{ username }}</h2>
+                    <h6><span>{{ followers }} followers</span> | <span>{{ following }} following</span></h6>
+                    {% if username != request.user.username and user.is_authenticated %}
+                        <button class="follow-button btn btn-primary btn-sm" data-profilename="{{ username }}">
+                            {% if is_following %}
+                                Unfollow
+                            {% else %}
+                                Follow
+                            {%  endif %} 
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+            
+            {% include "network/post_view.html" %}
+
+            <div id="pagination">
+                {% if has_previous %}
+                    <a class="page btn btn-light" href="{% url 'profile' username previous_page_number %} ">Previous</a>
+                {% endif %}
+                {% if has_next %}
+                    <a class="page btn btn-dark" href="{% url 'profile' username next_page_number %}">Next</a>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/post.js' %}"></script>
+{% endblock %}

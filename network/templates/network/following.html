@@ -1,0 +1,25 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <main>
+        <h2 class="mb-3">Following</h2>
+        <div class="content-box">
+            {% include "network/post_view.html" %}
+            
+            <div id="pagination">
+                {% if has_previous %}
+                <a class="page btn btn-light" href="{% url 'following' previous_page_number %}">Previous</a>
+                {% endif %}
+                {% if has_next %}
+                <a class="page btn btn-dark" href="{% url 'following' next_page_number %}">Next</a>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+        
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/post.js' %}"></script>
+{% endblock %}

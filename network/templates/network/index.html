@@ -1,0 +1,39 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <main>
+        <h2>All Posts</h2>
+        <div class="content-box">
+            {% if user.is_authenticated %}
+                <form class="container" action="{% url 'create_post' %}" method="post">
+                    {% csrf_token %}
+                    <div class="create-post">
+                        <h5>Create Post</h5>
+                    </div>
+                    <div class="text-button-container">
+                        <textarea class="form-control" id="content" name="content" placeholder="Write your post here..."></textarea>
+                        <button class="post-button">Post</button>
+                    </div>
+                </form>
+            {% endif %}
+
+            {% include "network/post_view.html" %}
+
+            <div id="pagination">
+                {% if has_previous %}
+                    <a class="page btn btn-light" href="{% url 'get_posts' previous_page_number %}">Previous</a>
+                {% endif %}
+                {% if has_next %}
+                    <a class="page btn btn-dark" href="{% url 'get_posts' next_page_number %}">Next</a>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    
+    
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/post.js' %}"></script>
+{% endblock %}
