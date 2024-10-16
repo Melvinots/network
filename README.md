@@ -21,26 +21,26 @@ Welcome to the Network Project! This project is a social networking platform bui
 
 ## Directory Structure
 
-network-project/
-├── network/
-│   ├── migrations/
-│   ├── static/
-│   │   └── network/
-│   │       └── images/
-│   ├── templates/
-│   │   └── network/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   ├── views.py
-├── networkproject/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-├── manage.py
-├── requirements.txt
+network-project/<br>
+├── network/<br>
+│   ├── migrations/<br>
+│   ├── static/<br>
+│   │   └── network/<br>
+│   │       └── images/<br>
+│   ├── templates/<br>
+│   │   └── network/<br>
+│   ├── __init__.py<br>
+│   ├── admin.py<br>
+│   ├── apps.py<br>
+│   ├── models.py<br>
+│   ├── tests.py<br>
+│   ├── urls.py<br>
+│   ├── views.py<br>
+├── networkproject/<br>
+│   ├── __init__.py<br>
+│   ├── asgi.py<br>
+│   ├── settings.py<br>
+│   ├── urls.py<br>
+│   ├── wsgi.py<br>
+├── manage.py<br>
+├── requirements.txt<br>
